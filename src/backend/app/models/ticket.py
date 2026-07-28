@@ -52,7 +52,7 @@ class Ticket(Base):
         server_default = 'PENDING'
     )
     
-    create_at: Mapped[datetime] = mapped_column(
+    created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone= True),
         nullable = False,
         default = func.now(),
