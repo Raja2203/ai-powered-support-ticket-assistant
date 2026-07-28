@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from app.core.config import Settings
+from app.api.ticket_routers import ticket_router
 
 app = FastAPI(
     title = Settings.app_name,
@@ -14,3 +15,5 @@ def health_check() -> dict[str, str]:
         'service' : Settings.app_name,
         'environment' : Settings.app_env
     }
+    
+app.include_router(ticket_router)
