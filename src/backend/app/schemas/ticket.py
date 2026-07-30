@@ -11,7 +11,7 @@ class CreateTicket(BaseModel):
     
     
 class UpdateTicket(BaseModel):
-    ticket_number : Annotated[str | None, Field(default= None, min_length = 17, max_length = 17)]
+    ticket_number : Annotated[str | None, Field(default= None, min_length = 21, max_length = 21)]
     subject : Annotated[str | None, Field(default= None, min_length = 10, max_length = 50)]
     description : Annotated[str | None, Field(default= None, min_length = 20, max_length = 2000)]
     category : Annotated[str | None, Field(default= None, min_length = 5, max_length = 20)]
@@ -19,7 +19,7 @@ class UpdateTicket(BaseModel):
     status : Annotated[str | None, Field(default= None, min_length = 4, max_length = 10)]
     
 class TicketResponse(BaseModel):
-    model_config = ConfigDict(from_attribute = True)
+    model_config = ConfigDict(from_attributes = True)
     ticket_number : str
     subject : str
     description : str

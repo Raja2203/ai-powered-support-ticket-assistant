@@ -16,7 +16,7 @@ class Ticket(Base):
     )
     
     ticket_number: Mapped[str] = mapped_column(
-        String(30),
+        String(21),
         unique = True,
         nullable = False,
         index = True,

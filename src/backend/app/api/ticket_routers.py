@@ -27,3 +27,11 @@ ticket_router = APIRouter(
 @ticket_router.post("", response_model = TicketResponse, status_code = 201)
 def create_ticket(request: CreateTicket, db: DatabaseSession, ticket_service: ticket_service_dependency):
     return ticket_service.create_ticket(request = request, db = db)
+
+@ticket_router.get("", response_model = TicketsResponse, status_code = 200)
+def get_all_tickets(db: DatabaseSession, ticket_service: ticket_service_dependency):
+    return ticket_service.get_all_tickets(db)
+
+@ticket_router.get("/{ticket_number}", response_model = TicketResponse, status_code = 200)
+def get_ticket(db: DatabaseSession, ticket_number: str, ticket_service: ticket_service_dependency) -> TicketResponse:
+    return ticket_service.get_ticket(db = db,ticket_number = ticket_number)
